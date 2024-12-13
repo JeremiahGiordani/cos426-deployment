@@ -1,7 +1,7 @@
 /**
- * Creates a health bar and attaches it to the scene. 
+ * Creates a health bar and attaches it to the scene.
  * The health bar visually represents the player's health in the game.
- * 
+ *
  * @param {object} scene - The game scene where the health bar is displayed.
  */
 export function createHealthBar(scene) {
@@ -57,7 +57,7 @@ export function createHealthBar(scene) {
 
 /**
  * Updates the health bar to reflect the player's current health.
- * 
+ *
  * @param {object} scene - The game scene containing the health bar.
  * @param {number} health - The player's current health value (clamped between 0 and 100).
  */
@@ -118,13 +118,12 @@ export function showJailPopup() {
     document.getElementById('restart-button').addEventListener('click', () => {
         window.location.reload(); // Reload the page directly here
     });
-    
 }
 
 /**
  * Displays a congratulatory popup when the player completes the game.
  * The popup shows the elapsed time and provides a button to restart.
- * 
+ *
  * @param {number} elapsedTime - The time taken to complete the course, in seconds.
  */
 export function showCongratsPopup(elapsedTime) {
@@ -172,7 +171,7 @@ export function showCongratsPopup(elapsedTime) {
 /**
  * Displays an instruction popup when the game starts.
  * The popup provides details on controls, objectives, and gameplay mechanics.
- * 
+ *
  * @param {object} scene - The game scene where the popup is displayed.
  */
 export function showInstructionPopup(scene) {

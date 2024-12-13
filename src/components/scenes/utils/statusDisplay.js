@@ -1,7 +1,7 @@
 /**
  * Creates a status display for the game that shows the elapsed time and distance traveled.
- * 
- * @param {object} scene - The game scene object. This function adds references 
+ *
+ * @param {object} scene - The game scene object. This function adds references
  * to the timer and distance display elements to the scene for dynamic updates.
  */
 export function createStatusDisplay(scene) {

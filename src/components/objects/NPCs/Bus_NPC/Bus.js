@@ -43,7 +43,7 @@ class Bus_NPC extends Group {
         if (this.parent) {
             this.parent.remove(this); // Remove the NPC from its parent group
         }
-    }  
+    }
 
     getRandomSpeed() {
         return Math.random() * (0.3 - 0.1) + 0.1;
@@ -59,5 +59,4 @@ class Bus_NPC extends Group {
     }
 }
 
-
-export default Bus_NPC; 
+export default Bus_NPC;

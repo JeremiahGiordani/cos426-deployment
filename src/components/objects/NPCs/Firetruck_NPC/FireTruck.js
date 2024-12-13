@@ -21,7 +21,7 @@ class Fire_Truck_NPC extends Group {
         this.restingZSpeed = this.getRandomSpeed();
         this.z_speed = 0;
         this.x_speed = 0;
-        this.position.y = 0.5
+        this.position.y = 0.5;
         this.position.x = 0.5 + lane;
         this.position.z = -1 * this.getRandomZ(chunk); // Generate random z-position based on chunk
         this.boundingBox = new Box3(); // Bounding box for the player
@@ -49,7 +49,7 @@ class Fire_Truck_NPC extends Group {
         if (this.parent) {
             this.parent.remove(this); // Remove the NPC from its parent group
         }
-    }  
+    }
 
     updateBoundingBox() {
         // Compute the bounding box of the player
@@ -61,5 +61,4 @@ class Fire_Truck_NPC extends Group {
     }
 }
 
-
-export default Fire_Truck_NPC; 
+export default Fire_Truck_NPC;

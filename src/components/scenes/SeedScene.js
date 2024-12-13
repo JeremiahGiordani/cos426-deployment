@@ -1,14 +1,40 @@
 import { Scene, Color } from 'three';
 import { Road, Player } from 'objects';
-import { Turnpike, Checkpoint0, Checkpoint1, Checkpoint2, Checkpoint3, Checkpoint4, Checkpoint5, Checkpoint6, Checkpoint7, Checkpoint8 } from 'objects';
+import {
+    Turnpike,
+    Checkpoint0,
+    Checkpoint1,
+    Checkpoint2,
+    Checkpoint3,
+    Checkpoint4,
+    Checkpoint5,
+    Checkpoint6,
+    Checkpoint7,
+    Checkpoint8,
+} from 'objects';
 import { BasicLights } from 'lights';
-import { Old_Car_NPC, Car_2_NPC, Cop_NPC, Fire_Truck_NPC, Taxi_NPC, Bus_NPC, Truck_NPC, Ambulance_NPC, Car_NPC } from '../objects';
-import { addKeyboardControls } from './utils/controls'; 
-import { createHealthBar, updateHealth, showJailPopup, showCongratsPopup, showInstructionPopup } from './utils/pageInteractions';
+import {
+    Old_Car_NPC,
+    Car_2_NPC,
+    Cop_NPC,
+    Fire_Truck_NPC,
+    Taxi_NPC,
+    Bus_NPC,
+    Truck_NPC,
+    Ambulance_NPC,
+    Car_NPC,
+} from '../objects';
+import { addKeyboardControls } from './utils/controls';
+import {
+    createHealthBar,
+    updateHealth,
+    showJailPopup,
+    showCongratsPopup,
+    showInstructionPopup,
+} from './utils/pageInteractions';
 import { initRoad, updateRoad } from './utils/roadManagement';
 import { checkCollisions } from './utils/collisions';
 import { createStatusDisplay } from './utils/statusDisplay';
-
 
 /**
  * SeedScene class representing the main game scene, including player, road, NPCs, and game state.
@@ -60,7 +86,7 @@ class SeedScene extends Scene {
         this.road = new Road();
         const sign = new Turnpike();
         this.player = new Player();
-        
+
         // Initialize checkpoints
         this.checkpoints = [
             new Checkpoint0(this.state.positionToMiles, 2),
@@ -85,18 +111,18 @@ class SeedScene extends Scene {
         // Initialize road
         initRoad(this);
 
-        this.position.x = -2.5
-        this.player.position.x = 2.5
+        this.position.x = -2.5;
+        this.player.position.x = 2.5;
         this.npcTypes = [
-            Old_Car_NPC, 
-            Car_2_NPC, 
-            Cop_NPC, 
-            Fire_Truck_NPC, 
-            Taxi_NPC, 
-            Bus_NPC, 
-            Truck_NPC, 
-            Ambulance_NPC, 
-            Car_NPC
+            Old_Car_NPC,
+            Car_2_NPC,
+            Cop_NPC,
+            Fire_Truck_NPC,
+            Taxi_NPC,
+            Bus_NPC,
+            Truck_NPC,
+            Ambulance_NPC,
+            Car_NPC,
         ];
 
         showInstructionPopup(this);
@@ -118,12 +144,12 @@ class SeedScene extends Scene {
         // Iterate over all NPCs
         for (let i = this.state.npcs.length - 1; i >= 0; i--) {
             const npc = this.state.npcs[i];
-    
+
             // Check the NPC's current chunk
             if (-1 * npc.getCurrentChunk() <= chunk) {
                 // Remove the NPC
                 npc.remove();
-                
+
                 // Remove the NPC from the state
                 this.state.npcs.splice(i, 1);
             }
@@ -131,12 +157,12 @@ class SeedScene extends Scene {
 
         for (let i = this.state.opposing_npcs.length - 1; i >= 0; i--) {
             const npc = this.state.opposing_npcs[i];
-    
+
             // Check the NPC's current chunk
             if (-1 * npc.getCurrentChunk() <= chunk) {
                 // Remove the NPC
                 npc.remove();
-                
+
                 // Remove the NPC from the state
                 this.state.opposing_npcs.splice(i, 1);
             }
@@ -149,19 +175,22 @@ class SeedScene extends Scene {
      */
     checkForCheckpoint() {
         const playerZ = this.player.position.z;
-    
+
         for (const checkpoint of this.checkpoints) {
             const checkpointZ = checkpoint.position.z;
-    
+
             // Check if the player has passed this checkpoint
-            if (!this.state.passedCheckpoints.has(checkpoint) && playerZ <= checkpointZ) {
+            if (
+                !this.state.passedCheckpoints.has(checkpoint) &&
+                playerZ <= checkpointZ
+            ) {
                 console.log(`Player passed ${checkpoint.name}`);
                 updateHealth(this, 100); // Restore health
                 this.state.passedCheckpoints.add(checkpoint); // Mark as passed
             }
         }
     }
-    
+
     /**
      * Updates the bounding boxes for all NPCs to ensure collision detection remains accurate.
      */
@@ -177,12 +206,12 @@ class SeedScene extends Scene {
     update(timeStamp) {
         const { updateList, x_speed, z_speed, updateSpeed } = this.state;
 
-        if (this.jail || this.completed){
+        if (this.jail || this.completed) {
             return;
         }
 
         // Show the instruction popup and pause the game until user starts
-        if (!this.started){
+        if (!this.started) {
             return;
         }
         // Update speeds based on keyboard input
@@ -197,8 +226,11 @@ class SeedScene extends Scene {
         this.timerElement.innerHTML = `Time: ${elapsedTime.toFixed(2)}s`;
 
         // Update distance
-        const distance = Math.abs(this.player.position.z) / this.state.positionToMiles; // Convert to miles
-        this.distanceElement.innerHTML = `Distance: ${distance.toFixed(2)} miles`;
+        const distance =
+            Math.abs(this.player.position.z) / this.state.positionToMiles; // Convert to miles
+        this.distanceElement.innerHTML = `Distance: ${distance.toFixed(
+            2
+        )} miles`;
 
         // Check if health is 0 or below
         if (this.state.health <= 0) {
@@ -214,18 +246,27 @@ class SeedScene extends Scene {
             return; // Stop further updates
         }
 
-        if (this.player.position.x >= 4.2955){
-            updateHealth(this, this.state.health - 5 * Math.abs(this.state.z_speed) - 5 * Math.abs(this.state.x_speed));
+        if (this.player.position.x >= 4.2955) {
+            updateHealth(
+                this,
+                this.state.health -
+                    5 * Math.abs(this.state.z_speed) -
+                    5 * Math.abs(this.state.x_speed)
+            );
             this.state.x_speed = 0.01;
             this.state.z_speed /= 1.3;
         }
 
-        if (this.player.position.x <= 0.9864){
-            updateHealth(this, this.state.health - 5 * Math.abs(this.state.z_speed) - 5 * Math.abs(this.state.x_speed));
+        if (this.player.position.x <= 0.9864) {
+            updateHealth(
+                this,
+                this.state.health -
+                    5 * Math.abs(this.state.z_speed) -
+                    5 * Math.abs(this.state.x_speed)
+            );
             this.state.x_speed = -0.01;
             this.state.z_speed /= 1.3;
         }
-
 
         // Update position based on speed
         this.position.x += x_speed;
@@ -239,10 +280,10 @@ class SeedScene extends Scene {
         // Update NPC car positions
         this.state.npcs.forEach((npc) => {
             npc.updateBoundingBox();
-            if (npc.position.x >= 4.3955){
+            if (npc.position.x >= 4.3955) {
                 npc.x_speed = 0.01;
             }
-            if (npc.position.x <= 0.8864){
+            if (npc.position.x <= 0.8864) {
                 npc.x_speed = -0.01;
             }
             npc.position.z -= npc.z_speed;
@@ -273,7 +314,7 @@ class SeedScene extends Scene {
     restartGame() {
         // Reload the page to reset the game
         window.location.reload();
-    }    
+    }
 }
 
 export default SeedScene;

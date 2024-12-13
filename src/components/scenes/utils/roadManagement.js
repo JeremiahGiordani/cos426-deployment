@@ -1,6 +1,6 @@
 /**
  * Initializes the road for the game by preloading road segments and placing NPCs.
- * 
+ *
  * @param {object} scene - The game scene where the road and NPCs are initialized.
  * @async
  */
@@ -14,9 +14,13 @@ export async function initRoad(scene) {
         await scene.road.addSegment(chunk);
 
         // For each lane in the chunk, add a random NPC
-        for (let lane = 0; lane < 3; lane++) { // Assuming 3 lanes
+        for (let lane = 0; lane < 3; lane++) {
+            // Assuming 3 lanes
             // Pick a random NPC type
-            const RandomNPC = scene.npcTypes[Math.floor(Math.random() * scene.npcTypes.length)];
+            const RandomNPC =
+                scene.npcTypes[
+                    Math.floor(Math.random() * scene.npcTypes.length)
+                ];
 
             // Create the NPC instance
             const npc = new RandomNPC(lane + 1, chunk + 1);
@@ -25,9 +29,13 @@ export async function initRoad(scene) {
             scene.state.npcs.push(npc);
             scene.add(npc);
         }
-        for (let lane = 0; lane < 3; lane++) { // Assuming 3 lanes
+        for (let lane = 0; lane < 3; lane++) {
+            // Assuming 3 lanes
             // Pick a random NPC type
-            const RandomNPC = scene.npcTypes[Math.floor(Math.random() * scene.npcTypes.length)];
+            const RandomNPC =
+                scene.npcTypes[
+                    Math.floor(Math.random() * scene.npcTypes.length)
+                ];
 
             // Create the NPC instance
             const npc = new RandomNPC(lane + 1, chunk + 1);
@@ -44,7 +52,7 @@ export async function initRoad(scene) {
 /**
  * Updates the road dynamically as the player progresses through the game.
  * This function preloads new road segments, places NPCs, and removes old segments and NPCs.
- * 
+ *
  * @param {object} scene - The game scene where the road is dynamically managed.
  * @async
  */
@@ -52,7 +60,8 @@ export async function updateRoad(scene) {
     const { renderDistance } = scene.state;
 
     // Calculate the current chunk based on the player's position
-    const currentChunk = Math.floor(scene.position.z / scene.road.chunkLength) - 1;
+    const currentChunk =
+        Math.floor(scene.position.z / scene.road.chunkLength) - 1;
 
     // If the player has advanced to a new chunk
     if (currentChunk > scene.state.currentChunk) {
@@ -64,27 +73,39 @@ export async function updateRoad(scene) {
             console.log(`Chunk ${currentChunk + renderDistance - 1} preloaded`);
 
             let cap;
-            if (scene.player.position.z >= -30 * scene.state.positionToMiles){
+            if (scene.player.position.z >= -30 * scene.state.positionToMiles) {
                 cap = 1;
-            } else{
+            } else {
                 cap = 2;
             }
-            for (let i = 0; i < cap; i++){
+            for (let i = 0; i < cap; i++) {
                 // Add one random NPC to a random lane in the new chunk
-                const RandomNPC = scene.npcTypes[Math.floor(Math.random() * scene.npcTypes.length)];
+                const RandomNPC =
+                    scene.npcTypes[
+                        Math.floor(Math.random() * scene.npcTypes.length)
+                    ];
                 const randomLane = Math.floor(Math.random() * 3) + 1; // Random lane (1, 2, or 3)
-                const npc = new RandomNPC(randomLane, currentChunk + renderDistance);
+                const npc = new RandomNPC(
+                    randomLane,
+                    currentChunk + renderDistance
+                );
 
                 // Add the NPC to the state and the scene
                 scene.state.npcs.push(npc);
                 scene.add(npc);
             }
-            
-            for (let i = 0; i < 2; i++){
+
+            for (let i = 0; i < 2; i++) {
                 // Add one random NPC to a random lane in the new chunk
-                const RandomOpposingNPC = scene.npcTypes[Math.floor(Math.random() * scene.npcTypes.length)];
+                const RandomOpposingNPC =
+                    scene.npcTypes[
+                        Math.floor(Math.random() * scene.npcTypes.length)
+                    ];
                 const randomOpposingLane = Math.floor(Math.random() * 3) + 1; // Random lane (1, 2, or 3)
-                const opposing_npc = new RandomOpposingNPC(randomOpposingLane, currentChunk + renderDistance);
+                const opposing_npc = new RandomOpposingNPC(
+                    randomOpposingLane,
+                    currentChunk + renderDistance
+                );
 
                 opposing_npc.rotation.y += Math.PI;
                 opposing_npc.position.x *= -1;
@@ -98,7 +119,7 @@ export async function updateRoad(scene) {
             scene.road.removeOldSegment();
             scene.removeOldNPCs(currentChunk - 1);
         } catch (error) {
-            console.error("Failed to preload chunk:", error);
+            console.error('Failed to preload chunk:', error);
         }
     }
 }

@@ -48,7 +48,7 @@ class Ambulance_NPC extends Group {
         if (this.parent) {
             this.parent.remove(this); // Remove the NPC from its parent group
         }
-    }  
+    }
 
     updateBoundingBox() {
         // Compute the bounding box of the player
@@ -60,5 +60,4 @@ class Ambulance_NPC extends Group {
     }
 }
 
-
-export default Ambulance_NPC; 
+export default Ambulance_NPC;

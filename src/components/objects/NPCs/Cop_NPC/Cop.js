@@ -48,7 +48,7 @@ class Cop_NPC extends Group {
         if (this.parent) {
             this.parent.remove(this); // Remove the NPC from its parent group
         }
-    }  
+    }
 
     updateBoundingBox() {
         // Compute the bounding box of the player
@@ -60,5 +60,4 @@ class Cop_NPC extends Group {
     }
 }
 
-
-export default Cop_NPC; 
+export default Cop_NPC;

@@ -19,12 +19,12 @@ class Road extends Group {
                 MODEL,
                 (gltf) => {
                     this.modelTemplate = gltf.scene;
-                    console.log("Model template loaded");
+                    console.log('Model template loaded');
                     resolve();
                 },
                 undefined,
                 (error) => {
-                    console.error("Error loading model template:", error);
+                    console.error('Error loading model template:', error);
                     reject(error);
                 }
             );
@@ -34,7 +34,7 @@ class Road extends Group {
     addSegment(chunkNumber) {
         return new Promise((resolve, reject) => {
             if (!this.modelTemplate) {
-                reject(new Error("Model template not loaded"));
+                reject(new Error('Model template not loaded'));
                 return;
             }
 
@@ -61,7 +61,7 @@ class Road extends Group {
         if (this.segments.length > 0) {
             const { model } = this.segments.shift();
             this.remove(model);
-            console.log("Oldest chunk removed");
+            console.log('Oldest chunk removed');
         }
     }
 }

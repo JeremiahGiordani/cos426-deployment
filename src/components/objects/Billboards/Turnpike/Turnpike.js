@@ -17,7 +17,7 @@ class Turnpike extends Group {
         this.scale.set(0.01, 0.01, 0.01);
         this.position.x = 5;
         this.position.z = -30;
-        this.rotation.y = Math.PI/2;
+        this.rotation.y = Math.PI / 2;
         // this.position.y = ;
     }
 }

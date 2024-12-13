@@ -20,7 +20,6 @@ export function checkCollisions(scene) {
     });
 }
 
-
 /**
  * Handles the physics and effects of a collision between the player and an NPC.
  *
@@ -28,7 +27,7 @@ export function checkCollisions(scene) {
  * @param {object} npc - The NPC object involved in the collision.
  *
  * This function calculates new velocities for both the player and the NPC based on their masses
- * and current velocities. It also applies a collision offset to visually separate the objects 
+ * and current velocities. It also applies a collision offset to visually separate the objects
  * and decreases the player's health based on the impact force.
  */
 export function handleNpcCollision(scene, npc) {
@@ -43,23 +42,23 @@ export function handleNpcCollision(scene, npc) {
     const npcVelocity = { x: npc.x_speed, z: npc.z_speed };
 
     // Elastic collision formulas
-    const newPlayerZVelocity = (
-        (playerMass - npcMass) * playerVelocity.z +
-        2 * npcMass * npcVelocity.z
-    ) / totalMass;
-    const newNpcZVelocity = (
-        (npcMass - playerMass) * npcVelocity.z +
-        2 * playerMass * playerVelocity.z
-    ) / totalMass;
+    const newPlayerZVelocity =
+        ((playerMass - npcMass) * playerVelocity.z +
+            2 * npcMass * npcVelocity.z) /
+        totalMass;
+    const newNpcZVelocity =
+        ((npcMass - playerMass) * npcVelocity.z +
+            2 * playerMass * playerVelocity.z) /
+        totalMass;
 
-    const newPlayerXVelocity = (
-        (playerMass - npcMass) * playerVelocity.x +
-        2 * npcMass * npcVelocity.x
-    ) / totalMass;
-    const newNpcXVelocity = (
-        (npcMass - playerMass) * npcVelocity.x +
-        2 * playerMass * playerVelocity.x
-    ) / totalMass;
+    const newPlayerXVelocity =
+        ((playerMass - npcMass) * playerVelocity.x +
+            2 * npcMass * npcVelocity.x) /
+        totalMass;
+    const newNpcXVelocity =
+        ((npcMass - playerMass) * npcVelocity.x +
+            2 * playerMass * playerVelocity.x) /
+        totalMass;
 
     // Apply updated velocities
     scene.state.z_speed = newPlayerZVelocity;
@@ -75,7 +74,9 @@ export function handleNpcCollision(scene, npc) {
     };
 
     // Normalize the collision vector
-    const magnitude = Math.sqrt(collisionVector.x ** 2 + collisionVector.z ** 2);
+    const magnitude = Math.sqrt(
+        collisionVector.x ** 2 + collisionVector.z ** 2
+    );
     if (magnitude > 0) {
         collisionVector.x /= magnitude;
         collisionVector.z /= magnitude;

@@ -44,7 +44,7 @@ class Truck_NPC extends Group {
         if (this.parent) {
             this.parent.remove(this); // Remove the NPC from its parent group
         }
-    }  
+    }
 
     getRandomSpeed() {
         return Math.random() * (0.3 - 0.1) + 0.1;
@@ -60,5 +60,4 @@ class Truck_NPC extends Group {
     }
 }
 
-
-export default Truck_NPC; 
+export default Truck_NPC;

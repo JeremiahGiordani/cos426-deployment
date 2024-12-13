@@ -16,7 +16,7 @@ class Old_Car_NPC extends Group {
         });
         this.scale.set(1.1, 1.1, 1.1);
         this.mass = 1;
-        this.position.y = 0.2
+        this.position.y = 0.2;
         this.position.x = 0.5 + lane;
         this.position.z = -1 * this.getRandomZ(chunk); // Generate random z-position based on chunk
         this.restingZSpeed = this.getRandomSpeed();
@@ -47,7 +47,7 @@ class Old_Car_NPC extends Group {
         if (this.parent) {
             this.parent.remove(this); // Remove the NPC from its parent group
         }
-    }  
+    }
 
     updateBoundingBox() {
         // Compute the bounding box of the player
@@ -59,5 +59,4 @@ class Old_Car_NPC extends Group {
     }
 }
 
-
-export default Old_Car_NPC; 
+export default Old_Car_NPC;
