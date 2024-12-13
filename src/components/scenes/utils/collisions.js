@@ -1,4 +1,4 @@
-import { updateHealth } from './healthBar';
+import { updateHealth } from './pageInteractions';
 
 
 export function checkCollisions(scene) {

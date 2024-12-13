@@ -147,3 +147,48 @@ export function showCongratsPopup(elapsedTime) {
     document.body.appendChild(popup);
 }
 
+export function showInstructionPopup(scene) {
+    // Create the popup container
+    const popup = document.createElement('div');
+    popup.id = 'instruction-popup';
+    popup.style.position = 'absolute';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+    popup.style.color = '#fff';
+    popup.style.padding = '20px';
+    popup.style.borderRadius = '10px';
+    popup.style.textAlign = 'center';
+    popup.style.fontSize = '18px';
+    popup.style.zIndex = '1000';
+
+    // Generate the popup content
+    popup.innerHTML = `
+        <h1>Welcome to Pennsylvania Turnpike Simulator!</h1>
+        <p>Use <strong>W</strong> to accelerate, <strong>A</strong> and <strong>D</strong> to steer, and <strong>S</strong> to brake.</p>
+        <p>Avoid collisions to conserve your health. Passing checkpoints restores your health to full.</p>
+        <p>Reach the finish line to complete the course!</p>
+        <button id="start-game-button" style="
+            margin-top: 20px; 
+            padding: 10px 20px; 
+            background-color: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            font-size: 16px;">
+            Start Game
+        </button>
+    `;
+
+    // Add event listener to the "Start Game" button
+    popup.querySelector('#start-game-button').addEventListener('click', () => {
+        // console.log("CLICKED");
+        popup.style.display = 'none'; // Hide the popup
+        scene.started = true;
+    });
+
+    // Append the popup to the document body
+    document.body.appendChild(popup);
+}

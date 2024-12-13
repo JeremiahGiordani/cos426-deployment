@@ -4,7 +4,7 @@ import { Turnpike, Checkpoint0, Checkpoint1, Checkpoint2, Checkpoint3, Checkpoin
 import { BasicLights } from 'lights';
 import { Old_Car_NPC, Car_2_NPC, Cop_NPC, Fire_Truck_NPC, Taxi_NPC, Bus_NPC, Truck_NPC, Ambulance_NPC, Car_NPC } from '../objects';
 import { addKeyboardControls } from './utils/controls'; 
-import { createHealthBar, updateHealth, showJailPopup, showCongratsPopup } from './utils/healthBar';
+import { createHealthBar, updateHealth, showJailPopup, showCongratsPopup, showInstructionPopup } from './utils/pageInteractions';
 import { initRoad, updateRoad } from './utils/roadManagement';
 import { checkCollisions } from './utils/collisions';
 import { createStatusDisplay } from './utils/statusDisplay';
@@ -43,6 +43,7 @@ class SeedScene extends Scene {
 
         this.jail = false;
         this.completed = false;
+        this.started = false;
 
         // Set background to a nice color
         this.background = new Color(0x7ec0ee);
@@ -90,6 +91,8 @@ class SeedScene extends Scene {
             Ambulance_NPC, 
             Car_NPC
         ];
+
+        showInstructionPopup(this);
     }
 
     addToUpdateList(object) {
@@ -149,6 +152,11 @@ class SeedScene extends Scene {
         const { updateList, x_speed, z_speed, updateSpeed } = this.state;
 
         if (this.jail || this.completed){
+            return;
+        }
+
+        // Show the instruction popup and pause the game until user starts
+        if (!this.started){
             return;
         }
         // Update speeds based on keyboard input
