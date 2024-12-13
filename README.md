@@ -31,7 +31,7 @@ This project was developed using the COS 426 project template and includes asset
 
 ## Writeup  
 
-A detailed writeup explaining the design, implementation, and methodology of the game can be found in the file `report.pdf` included in this repository.  
+A detailed writeup explaining the design, implementation, and methodology of the game can be found in the file `Project_Report.pdf` included in this repository.  
 
 ## Installation and Running Locally  
 
