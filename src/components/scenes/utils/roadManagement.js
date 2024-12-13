@@ -1,3 +1,9 @@
+/**
+ * Initializes the road for the game by preloading road segments and placing NPCs.
+ * 
+ * @param {object} scene - The game scene where the road and NPCs are initialized.
+ * @async
+ */
 export async function initRoad(scene) {
     // Load the model template once
     await scene.road.loadModelTemplate();
@@ -35,6 +41,13 @@ export async function initRoad(scene) {
     }
 }
 
+/**
+ * Updates the road dynamically as the player progresses through the game.
+ * This function preloads new road segments, places NPCs, and removes old segments and NPCs.
+ * 
+ * @param {object} scene - The game scene where the road is dynamically managed.
+ * @async
+ */
 export async function updateRoad(scene) {
     const { renderDistance } = scene.state;
 

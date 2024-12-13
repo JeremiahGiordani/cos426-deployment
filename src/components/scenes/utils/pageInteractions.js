@@ -1,3 +1,9 @@
+/**
+ * Creates a health bar and attaches it to the scene. 
+ * The health bar visually represents the player's health in the game.
+ * 
+ * @param {object} scene - The game scene where the health bar is displayed.
+ */
 export function createHealthBar(scene) {
     // Create the container for the health bar
     const healthBarContainer = document.createElement('div');
@@ -49,6 +55,12 @@ export function createHealthBar(scene) {
     document.body.appendChild(popup);
 }
 
+/**
+ * Updates the health bar to reflect the player's current health.
+ * 
+ * @param {object} scene - The game scene containing the health bar.
+ * @param {number} health - The player's current health value (clamped between 0 and 100).
+ */
 export function updateHealth(scene, health) {
     // Update health in the state
     scene.state.health = Math.max(0, Math.min(100, health)); // Clamp between 0 and 100
@@ -59,6 +71,10 @@ export function updateHealth(scene, health) {
     }
 }
 
+/**
+ * Displays a "Jail" popup when the player's health reaches 0.
+ * The popup lists crimes and offers a button to restart the game.
+ */
 export function showJailPopup() {
     const popup = document.getElementById('jail-popup');
     if (!popup) return;
@@ -105,6 +121,12 @@ export function showJailPopup() {
     
 }
 
+/**
+ * Displays a congratulatory popup when the player completes the game.
+ * The popup shows the elapsed time and provides a button to restart.
+ * 
+ * @param {number} elapsedTime - The time taken to complete the course, in seconds.
+ */
 export function showCongratsPopup(elapsedTime) {
     const popup = document.createElement('div');
     popup.id = 'congrats-popup';
@@ -147,6 +169,12 @@ export function showCongratsPopup(elapsedTime) {
     document.body.appendChild(popup);
 }
 
+/**
+ * Displays an instruction popup when the game starts.
+ * The popup provides details on controls, objectives, and gameplay mechanics.
+ * 
+ * @param {object} scene - The game scene where the popup is displayed.
+ */
 export function showInstructionPopup(scene) {
     // Create the popup container
     const popup = document.createElement('div');

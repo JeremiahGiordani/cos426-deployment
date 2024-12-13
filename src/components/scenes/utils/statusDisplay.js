@@ -1,3 +1,9 @@
+/**
+ * Creates a status display for the game that shows the elapsed time and distance traveled.
+ * 
+ * @param {object} scene - The game scene object. This function adds references 
+ * to the timer and distance display elements to the scene for dynamic updates.
+ */
 export function createStatusDisplay(scene) {
     // Create a container for the timer and distance
     const statusContainer = document.createElement('div');

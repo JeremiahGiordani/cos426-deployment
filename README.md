@@ -54,6 +54,27 @@ A detailed writeup explaining the design, implementation, and methodology of the
 
 This project is for educational purposes as part of COS 426 coursework and may not be used for commercial purposes.  
 
+## Acknowledgements
+
+This code was based on the template for this course, found here: [COS 426 Final Project Template](https://github.com/adamfinkelstein/cos426finalproject)
+
+NPCs and objects were obtained from [Poly Pizza](https://poly.pizza/).
+
+The following objects were used, with their corresponding references:
+
+- **Road**: Highway by Poly by Google [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/0iOOmcNC19A)
+- **Billboard**: Billboard by Poly by Google [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/2Kl87jaGQEB)
+- **Player**: Red Car by J-Toastie [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/dVLJ5CjB0h)
+- **80s Car**: 80s Car by Nick Ladd [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/7tPSW5UYD20)
+- **Ambulance**: Ambulance by Poly by Google [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/8NOFImgkI5N)
+- **Bus**: Bus by jeremy [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/bsvS0E1eo4R)
+- **Standard Car 1**: Car by Poly by Google [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/75h3mi6uHuC)
+- **Standard Car 2**: Car by Quaternius via [Poly Pizza](https://poly.pizza/m/Cz6yDaUcM9)
+- **Cop Car**: Police Car by Quaternius via [Poly Pizza](https://poly.pizza/m/BwwnUrWGmV)
+- **Firetruck**: Fire Truck by Ivan Klus [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/7iHJ519SwxG)
+- **Taxi**: Taxi by Ivan Klus [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/7iHJ519SwxG)
+- **Truck**: Truck by Poly by Google [CC-BY](https://creativecommons.org/licenses/by/3.0/) via [Poly Pizza](https://poly.pizza/m/36sY8cTSgKL)
+
 ---  
 
 Feel free to reach out with any questions or feedback!  

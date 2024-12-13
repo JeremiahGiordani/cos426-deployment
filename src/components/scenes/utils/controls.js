@@ -1,3 +1,12 @@
+/**
+ * Adds keyboard controls to the game, allowing the player to move and control the car.
+ *
+ * @param {object} scene - The game scene that contains the player and state variables.
+ *
+ * This function listens for keyboard events to determine which keys are being pressed and
+ * updates the player's speed and direction accordingly. It also applies friction when no
+ * keys are pressed to gradually decelerate the car.
+ */
 export function addKeyboardControls(scene) {
     // Keep track of keys being pressed
     const keysPressed = new Set();

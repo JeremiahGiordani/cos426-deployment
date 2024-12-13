@@ -1,6 +1,12 @@
 import { updateHealth } from './pageInteractions';
 
-
+/**
+ * Checks for collisions between the player and NPCs in the scene.
+ *
+ * @param {object} scene - The game scene containing the player and NPCs.
+ * This function iterates through all NPCs in the scene, checking if the player's bounding box
+ * intersects with any NPC's bounding box. If a collision is detected, it handles the collision.
+ */
 export function checkCollisions(scene) {
     const playerBox = scene.player.getBoundingBox();
 
@@ -14,6 +20,17 @@ export function checkCollisions(scene) {
     });
 }
 
+
+/**
+ * Handles the physics and effects of a collision between the player and an NPC.
+ *
+ * @param {object} scene - The game scene containing the player and NPCs.
+ * @param {object} npc - The NPC object involved in the collision.
+ *
+ * This function calculates new velocities for both the player and the NPC based on their masses
+ * and current velocities. It also applies a collision offset to visually separate the objects 
+ * and decreases the player's health based on the impact force.
+ */
 export function handleNpcCollision(scene, npc) {
     console.log(`Collision with ${npc.name}!`);
 

@@ -10,7 +10,14 @@ import { checkCollisions } from './utils/collisions';
 import { createStatusDisplay } from './utils/statusDisplay';
 
 
+/**
+ * SeedScene class representing the main game scene, including player, road, NPCs, and game state.
+ * Inherits from the THREE.Scene class.
+ */
 class SeedScene extends Scene {
+    /**
+     * Constructs the SeedScene, initializing the game state, objects, and UI elements.
+     */
     constructor() {
         // Call parent Scene() constructor
         super();
@@ -95,10 +102,18 @@ class SeedScene extends Scene {
         showInstructionPopup(this);
     }
 
+    /**
+     * Adds an object to the update list, ensuring it gets updated during the game loop.
+     * @param {object} object - The object to be added to the update list.
+     */
     addToUpdateList(object) {
         this.state.updateList.push(object);
     }
 
+    /**
+     * Removes NPCs that are no longer needed because they are far behind the player.
+     * @param {number} chunk - The chunk threshold for removing old NPCs.
+     */
     removeOldNPCs(chunk) {
         // Iterate over all NPCs
         for (let i = this.state.npcs.length - 1; i >= 0; i--) {
@@ -128,6 +143,10 @@ class SeedScene extends Scene {
         }
     }
 
+    /**
+     * Checks whether the player has passed a checkpoint.
+     * Restores health and updates game state if a checkpoint is passed.
+     */
     checkForCheckpoint() {
         const playerZ = this.player.position.z;
     
@@ -143,11 +162,18 @@ class SeedScene extends Scene {
         }
     }
     
-
+    /**
+     * Updates the bounding boxes for all NPCs to ensure collision detection remains accurate.
+     */
     updateNpcBoundingBoxes() {
         this.state.npcs.forEach((npc) => npc.updateBoundingBox());
     }
 
+    /**
+     * Main update loop for the scene.
+     * Handles player movement, health, collisions, road updates, and checkpoint tracking.
+     * @param {number} timeStamp - The current time stamp of the game loop.
+     */
     update(timeStamp) {
         const { updateList, x_speed, z_speed, updateSpeed } = this.state;
 
@@ -241,6 +267,9 @@ class SeedScene extends Scene {
         }
     }
 
+    /**
+     * Restarts the game by reloading the page.
+     */
     restartGame() {
         // Reload the page to reset the game
         window.location.reload();
